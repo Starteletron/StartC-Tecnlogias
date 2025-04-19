@@ -1,0 +1,241 @@
+/* Reset de estilo padrão */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo da página */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #2C3E50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+nav {
+  margin-top: 10px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 20px;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #3498db;
+}
+
+/* Seção Principal */
+main {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Seção de Introdução */
+.intro {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.intro h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.cta {
+  margin-top: 30px;
+}
+
+.cta a {
+  background-color: #3498db;
+  color: white;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+.cta a:hover {
+  background-color: #2980b9;
+}
+
+/* Estilo de Serviços */
+.service-item {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-item h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.service-item ul {
+  margin-left: 20px;
+}
+
+.service-item ul li {
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+/* Rodapé */
+footer {
+  background-color: #2C3E50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 1rem;
+}
+
+footer a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: white;
+}
+
+/* Seção de Contato */
+.contact-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form input[type="submit"] {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form input[type="submit"]:hover {
+  background-color: #2980b9;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    font-size: 1rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .intro h2 {
+    font-size: 1.8rem;
+  }
+
+  .cta a {
+    font-size: 1rem;
+  }
+
+  .service-item {
+    padding: 15px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem;
+  }
+}
+
+/* Destaques e alertas */
+.highlight {
+  font-weight: bold;
+  color: #3498db;
+}
+
+.canceladas {
+  color: red;
+}
+
+.homologadas {
+  color: green;
+}
+.btn-upload {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 12px 25px;
+  margin-top: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.btn-upload:hover {
+  background-color: #2980b9;
+}
+.input-busca {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
