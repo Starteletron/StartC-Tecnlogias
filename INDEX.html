@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contar XMLs no ZIP</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    input { margin-bottom: 20px; }
+    #resultado { font-weight: bold; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h2>Contar Arquivos XML no ZIP</h2>
+  <input type="file" id="zipInput" accept=".zip">
+  <div id="resultado"></div>
+
+  <script>
+    document.getElementById('zipInput').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      const resultadoDiv = document.getElementById('resultado');
+
+      if (!file) {
+        resultadoDiv.textContent = "Nenhum arquivo selecionado.";
+        return;
+      }
+
+      if (file.type !== "application/zip" && !file.name.endsWith(".zip")) {
+        resultadoDiv.textContent = "Por favor, selecione um arquivo .zip válido.";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        JSZip.loadAsync(e.target.result).then(function(zip) {
+          let count = 0;
+          zip.forEach(function (relativePath, zipEntry) {
+            if (zipEntry.name.toLowerCase().endsWith(".xml")) {
+              count++;
+            }
+          });
+          resultadoDiv.textContent = `Total de arquivos XML no ZIP: ${count}`;
+        }).catch(function(err) {
+          resultadoDiv.textContent = "Erro ao ler o arquivo ZIP: " + err;
+        });
+      };
+      reader.readAsArrayBuffer(file);
+    });
+  </script>
+
+</body>
+</html>
