@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ferramentas - Ferramentas para Contadores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Bibliotecas externas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="logo.png" alt="Logo da StarC Tecnologias" class="logo-img">
+      </a>
+      <h1>Ferramentas Contábeis</h1>
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="ferramentas.html" class="active">Ferramentas</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="section-title">Análise de <span class="highlight-title">Documentos Fiscais</span>
+      </h2>
+
+      <div class="card">
+        <h3 class="tool-title">Contador de Arquivos XML (ZIP)</h3>
+        <label for="zipInput" class="btn-upload">📁 Selecionar Arquivo ZIP</label>
+        <input type="file" id="zipInput" accept=".zip" hidden>
+        <div id="resultadoZip" class="result"></div>
+      </div>
+
+      <div class="card">
+        <h3 class="tool-title">Leitura de Notas Fiscais em Excel</h3>
+        <label for="excelInput" class="btn-upload">📁 Selecionar Arquivo Excel</label>
+        <input type="file" id="excelInput" accept=".xlsx, .xls" hidden>
+        <div id="resultadoExcel" class="result"></div>
+      </div>
+    </section>
+
+    <div class="card">
+      <h3 class="tool-title">🔎 Buscar Nota Fiscal por Número</h3>
+      <label for="zipBuscaInput" class="btn-upload">📁 Selecionar Arquivo ZIP</label>
+      <input type="file" id="zipBuscaInput" accept=".zip" hidden>
+
+      <input type="text" id="numeroNota" placeholder="Digite o número da nota" class="input-busca">
+      <button id="buscarNota" class="btn-upload">🔍 Buscar Nota</button>
+      <div id="mensagemBusca" class="result"></div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Ferramentas Contábeis | Desenvolvido com 💙 para contadores
+  </footer>
+
+  <!-- JavaScript principal -->
+  <script src="js/ferramentas.js"></script>
+</body>
+</html>

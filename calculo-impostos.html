@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Leitor de Arquivos - Ferramentas Contábeis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Bibliotecas externas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="logo.png" alt="Logo da StarC Tecnologias" class="logo-img">
+      </a>
+      <h1>Ferramentas Contábeis</h1>
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="ferramentas.html" class="active">Ferramentas</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <main id="calcular">
+    <section class="intro">
+      <h2>Bem-vindo à calculadora de impostos!</h2>
+      <p>Selecione o arquivo ZIP com as notas fiscais e escolha a base de presunção para calcular os impostos.</p>
+    </section>
+
+    <div class="form-container">
+      <!-- Seção para seleção de base de presunção e upload do ZIP -->
+      <div class="form-item">
+        <label for="basePresuncao">Escolha a base de presunção:</label>
+        <select id="basePresuncao">
+          <option value="0.08">8%</option>
+          <option value="0.32">32%</option>
+        </select>
+      </div>
+
+      <div class="form-item">
+        <input type="file" id="zipInputImpostos" />
+      </div>
+
+      <div class="cta">
+        <button id="calcularImpostosBtn">Calcular</button>
+      </div>
+    </div>
+
+    <!-- Resultado em Tabela -->
+    <div id="resultadoZipImpostos" class="resultado">
+      <table id="tabelaResultado" class="tabela-impostos" style="display: none;">
+        <thead>
+          <tr>
+            <th>Imposto</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Total de Arquivos XML</td>
+            <td id="totalArquivos"></td>
+          </tr>
+          <tr>
+            <td>Total das Notas Fiscais</td>
+            <td id="totalNotas"></td>
+          </tr>
+          <tr>
+            <td>PIS (0,65%)</td>
+            <td id="pis"></td>
+          </tr>
+          <tr>
+            <td>COFINS (3%)</td>
+            <td id="cofins"></td>
+          </tr>
+          <tr>
+            <td>CSLL (9% com base de presunção)</td>
+            <td id="csll"></td>
+          </tr>
+          <tr>
+            <td>IRPJ (15% com base de presunção)</td>
+            <td id="irpj"></td>
+          </tr>
+        </tbody>
+      </table>
+      <p id="mensagemErro" style="display: none;"></p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Ferramentas Contábeis | Desenvolvido com 💙 para contadores
+  </footer>
+
+  <!-- Script principal -->
+  <script src="js/ferramentas.js"></script>
+</body>
+</html>
