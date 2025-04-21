@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ferramentas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+  <header>
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="logo.png" alt="Logo da StarC Tecnologias" class="logo-img">
+      </a>
+      <h1>Ferramentas Contábeis</h1>
+    </div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="ferramentas.html" class="active">Ferramentas</a>
+      <a href="servicos.html">Serviços</a>
+      <a href="sobre.html">Sobre Nós</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2 class="section-title">
+        <span class="emoji">🛠️</span> Escolha a <span class="highlight-title">Ferramenta</span>
+    </h2>
+
+    <div class="ferramentas-container">
+      <!-- Card 1 -->
+      <div class="card carta" onclick="location.href='analise-notas.html'">
+        <div class="card-content">
+          <h3>📄 Análise de Notas</h3>
+          <p>Envie arquivos XML e Excel para leitura e análise de NF-e.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card carta" onclick="location.href='calculo-impostos.html'">
+        <div class="card-content">
+          <h3>💰 Cálculo de Impostos</h3>
+          <p>Ferramenta para calcular impostos com base nos dados fiscais.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 Ferramentas Contábeis | Desenvolvido com 💙 para contadores
+  </footer>
+
+</body>
+</html>
