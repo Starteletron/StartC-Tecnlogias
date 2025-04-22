@@ -14,21 +14,37 @@
 </head>
 <body>
 
+ 
+  <!-- Cabeçalho -->
+   
   <header>
     <div class="logo-container">
       <a href="index.html">
         <img src="logo.png" alt="Logo da StarC Tecnologias" class="logo-img">
       </a>
       <h1>Ferramentas Contábeis</h1>
+      <button id="menu-toggle" aria-label="Abrir Menu">&#9776;</button>
     </div>
-    <nav>
+  
+    <!-- Menu desktop -->
+    <nav class="nav-desktop">
       <a href="index.html">Início</a>
-      <a href="ferramentas.html" class="active">Ferramentas</a>
+      <a href="ferramentas.html">Ferramentas</a>
       <a href="servicos.html">Serviços</a>
       <a href="sobre.html">Sobre Nós</a>
       <a href="contato.html">Contato</a>
     </nav>
   </header>
+  
+  <!-- Menu mobile lateral -->
+  <nav id="sidebar" class="nav-mobile">
+    <a href="index.html">Início</a>
+    <a href="ferramentas.html">Ferramentas</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="sobre.html">Sobre Nós</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+  
 
   <main>
     <section>
@@ -66,6 +82,7 @@
   </footer>
 
   <!-- JavaScript principal -->
-  <script src="js/ferramentas.js"></script>
+  <script src="js/analise-notas.js"></script>
+  <script src="js/geral.js"></script>
 </body>
 </html>
