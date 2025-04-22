@@ -8,21 +8,36 @@
 </head>
 <body>
 
+ 
+  <!-- Cabeçalho -->
+   
   <header>
     <div class="logo-container">
       <a href="index.html">
         <img src="logo.png" alt="Logo da StarC Tecnologias" class="logo-img">
       </a>
       <h1>Ferramentas Contábeis</h1>
+      <button id="menu-toggle" aria-label="Abrir Menu">&#9776;</button>
     </div>
-    <nav>
+  
+    <!-- Menu desktop -->
+    <nav class="nav-desktop">
       <a href="index.html">Início</a>
-      <a href="ferramentas.html" class="active">Ferramentas</a>
+      <a href="ferramentas.html">Ferramentas</a>
       <a href="servicos.html">Serviços</a>
       <a href="sobre.html">Sobre Nós</a>
       <a href="contato.html">Contato</a>
     </nav>
   </header>
+  
+  <!-- Menu mobile lateral -->
+  <nav id="sidebar" class="nav-mobile">
+    <a href="index.html">Início</a>
+    <a href="ferramentas.html">Ferramentas</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="sobre.html">Sobre Nós</a>
+    <a href="contato.html">Contato</a>
+  </nav>
 
   <main>
     <h2 class="section-title">
@@ -51,6 +66,6 @@
   <footer>
     &copy; 2025 Ferramentas Contábeis | Desenvolvido com 💙 para contadores
   </footer>
-
+  <script src="js/geral.js"></script>
 </body>
 </html>
