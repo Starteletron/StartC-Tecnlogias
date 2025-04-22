@@ -7,23 +7,41 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+ <!-- Cabeçalho -->
+   
+ <!-- Cabeçalho -->
+   
+ 
   <!-- Cabeçalho -->
+   
   <header>
     <div class="logo-container">
       <a href="index.html">
         <img src="logo.png" alt="Logo da StarC Tecnologias" class="logo-img">
       </a>
       <h1>Ferramentas Contábeis</h1>
+      <button id="menu-toggle" aria-label="Abrir Menu">&#9776;</button>
     </div>
-    <nav>
+  
+    <!-- Menu desktop -->
+    <nav class="nav-desktop">
       <a href="index.html">Início</a>
-      <a href="ferramentas.html" class="active">Ferramentas</a>
+      <a href="ferramentas.html">Ferramentas</a>
       <a href="servicos.html">Serviços</a>
       <a href="sobre.html">Sobre Nós</a>
       <a href="contato.html">Contato</a>
     </nav>
   </header>
+  
+  <!-- Menu mobile lateral -->
+  <nav id="sidebar" class="nav-mobile">
+    <a href="index.html">Início</a>
+    <a href="ferramentas.html">Ferramentas</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="sobre.html">Sobre Nós</a>
+    <a href="contato.html">Contato</a>
+  </nav>
+
   
 
   <!-- Seção principal -->
@@ -76,6 +94,6 @@
     <p>&copy; 2025 StarC Tecnologias | Todos os direitos reservados</p>
     <p><a href="https://www.instagram.com/diascharles53" target="_blank">Instagram</a> | <a href="contato.html">Entre em Contato</a></p>
   </footer>
-
+  <script src="js/geral.js"></script>
 </body>
 </html>
