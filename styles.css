@@ -93,10 +93,10 @@ nav a:hover {
   display: none;
   flex-direction: column;
   position: fixed;
-  top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100%;
+  top: 10.5%;
+  left: -180px;
+  width: 180px;
+  height: 50%;
   background-color: #2C3E50;
   padding-top: 80px;
   transition: left 0.3s ease;
@@ -141,7 +141,27 @@ nav a:hover {
   }
   
   .logo-container h1 {
-      text-align: center;
+    text-align: center;
+  }
+  
+  #menu-toggle {
+    display: none; /* Esconde o botão do menu hamburguer no desktop */
+  }
+}
+
+@media (max-width: 460px) {
+  .logo-container {
+    justify-content: center; /* Centraliza os itens na horizontal */
+    gap: 15px; /* Espaço entre logo e título */
+  }
+  .logo-img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+  }
+  
+  .logo-container h1 {
+    display: none; /* Esconde o botão do menu hamburguer no desktop */
   }
   
   #menu-toggle {
