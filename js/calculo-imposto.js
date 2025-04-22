@@ -1,4 +1,3 @@
-
 // === ZIP PARA IMPOSTOS ===
 document.getElementById('calcularImpostosBtn').addEventListener('click', function() {
     const file = document.getElementById('zipInputImpostos').files[0];
