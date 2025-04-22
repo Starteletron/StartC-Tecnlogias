@@ -148,7 +148,7 @@ nav a:hover {
   
 }
 
-@media (max-width: 460px) {
+@media (max-width: 440px) {
 
   .logo-img {
     width: 80px;
@@ -170,6 +170,9 @@ nav a:hover {
     align-items: left;
     text-decoration: none;
     font-size: 2rem; /* Esconde o botão do menu hamburguer no desktop */
+  }
+  .nav-mobile {
+    top: 14.5%;
   }
 }
 /* Comentário: Para telas pequenas (até 768px), o menu desktop é escondido e o botão de menu é mostrado, permitindo o controle do menu lateral. */
