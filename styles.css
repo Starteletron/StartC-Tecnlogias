@@ -570,3 +570,33 @@ footer a:hover {
   background-color: #2980b9;
 }
 /* Comentário: Estilo de cards para a seção de ferramentas, com efeitos de hover para interatividade e um design visualmente atraente. */
+
+/* ------------------ CALCULO PREFEITURA  ------------------ */
+.ferramenta-notas {
+  max-width: 600px;
+  margin: auto;
+  padding: 1.5rem;
+  background-color: #f8f8f8;
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.form-item label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="file"],
+select {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+
+.resultado {
+  margin-top: 1.5rem;
+  font-weight: bold;
+}
