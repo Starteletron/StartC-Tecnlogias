@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório de Retenções de Impostos</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="styles-calculo-normal.css">
+  </style>
+</head>
+<body id="calculo-normais">
+
+  <div class="container">
+    <h1>Relatório de Retenções de Impostos</h1>
+
+    <!-- Formulário para upload de arquivo ZIP -->
+    <div class="form-item">
+      <label for="zipInput">Escolha o arquivo ZIP:</label>
+      <label class="file-drop" for="zipInput">
+        Clique aqui ou arraste um arquivo ZIP
+        <input type="file" id="zipInput" accept=".zip" />
+      </label>
+    </div>
+
+    <!-- Botão para processar o arquivo -->
+    <div class="cta">
+      <button onclick="processarZip()">Processar Arquivo ZIP</button>
+    </div>
+
+    <!-- Resultado dos cálculos -->
+    <div id="resultadoImpostos" style="display: none;">
+      <h3>Totais Consolidados:</h3>
+      <p><strong>Total de Notas:</strong> R$ <span id="totalNotas">0,00</span></p>
+
+      <h4>Totais por Imposto (Retidos):</h4>
+      <p><strong>ISS:</strong> R$ <span id="totalISS">0,00</span></p>
+      <p><strong>PIS:</strong> R$ <span id="totalPIS_Retido">0,00</span></p>
+      <p><strong>COFINS:</strong> R$ <span id="totalCOFINS_Retido">0,00</span></p>
+      <p><strong>CSLL:</strong> R$ <span id="totalCSLL_Retido">0,00</span></p>
+      <p><strong>IRPJ:</strong> R$ <span id="totalIRPJ_Retido">0,00</span></p> 
+
+
+      <h4>Totais por Imposto (Recolher):</h4>
+  
+      <p><strong>PIS:</strong> R$ <span id="totalPIS_Recolher">0,00</span></p>
+      <p><strong>COFINS:</strong> R$ <span id="totalCOFINS_Recolher">0,00</span></p>
+      <p><strong>CSLL:</strong> R$ <span id="totalCSLL_Recolher">0,00</span></p>
+      <p><strong>IRPJ:</strong> R$ <span id="totalIRPJ_Recolher">0,00</span></p> 
+
+    </div>
+  </div>
+
+  <script src="js/calculo-normais.js"></script>
+</body>
+</html>
