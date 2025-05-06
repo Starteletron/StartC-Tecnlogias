@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <!-- Definição do idioma da página para português -->
+<head>
+  <meta charset="UTF-8" />
+  <!-- Definição do tipo de codificação de caracteres para UTF-8 -->
+
+  <title>Login com Google Sheets</title>
+  <!-- Definição do título da página exibido na aba do navegador -->
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <!-- Carrega a biblioteca do Google Identity Services para autenticação com a conta Google -->
+
+  <style>
+    /* Estilos CSS para a página */
+    :root {
+      --azul-escuro: #0D47A1;
+      --azul: #2196F3;
+      --azul-claro: #BBDEFB;
+      --branco: #ffffff;
+      --cinza: #f5f5f5;
+    }
+
+    /* Estilos para o corpo da página */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--cinza);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+
+    /* Estilo para a logo */
+    .logo {
+      max-width: 150px;
+      margin-bottom: 20px;
+    }
+
+    /* Estilo para os formulários de login e cadastro */
+    .formulario {
+      background: var(--branco);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 350px;
+    }
+
+    /* Estilo para o título dentro do formulário */
+    .formulario h3 {
+      margin-bottom: 20px;
+      color: var(--azul-escuro);
+    }
+
+    /* Estilos para os campos de input */
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    /* Estilo para os botões */
+    button {
+      width: 100%;
+      background: var(--azul);
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    /* Desabilita o botão quando está em processo */
+    button:disabled {
+      background: #90caf9;
+      cursor: not-allowed;
+    }
+
+    /* Efeito de hover no botão */
+    button:hover:not(:disabled) {
+      background: var(--azul-escuro);
+    }
+
+    /* Estilos para o link de alternância entre login e cadastro */
+    .alternar {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #333;
+      text-align: center;
+    }
+
+    .alternar a {
+      color: var(--azul);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .alternar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Estilo para a mensagem de erro ou sucesso */
+    #mensagem {
+      margin-top: 15px;
+      font-weight: bold;
+      color: var(--azul-escuro);
+      text-align: center;
+    }
+
+    /* Estilo para o container do botão de login com Google */
+    #google_login {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Logo da empresa ou site -->
+  <img src="logo.png" alt="Minha Logo" class="logo">
+
+  <!-- FORMULÁRIO DE LOGIN -->
+  <div id="login" class="formulario">
+    <h3>Login</h3>
+
+    <!-- Botão de login com Google -->
+    <div id="google_login"></div>
+
+    <!-- Campos de entrada para e-mail e senha -->
+    <input type="email" id="email_login" placeholder="E-mail">
+    <input type="password" id="senha_login" placeholder="Senha">
+    
+    <!-- Botão de login -->
+    <button onclick="logar()">Entrar</button>
+    
+    <!-- Link para alternar entre login e cadastro -->
+    <div class="alternar">
+      Não tem uma conta? <a onclick="mostrarFormulario('cadastro')">Criar conta</a>
+    </div>
+  </div>
+
+  <!-- FORMULÁRIO DE CADASTRO -->
+  <div id="cadastro" class="formulario" style="display: none;">
+    <h3>Cadastro</h3>
+    
+    <!-- Campos de entrada para nome, e-mail e senha no cadastro -->
+    <input type="text" id="nome" placeholder="Nome completo">
+    <input type="email" id="email_cadastro" placeholder="E-mail">
+    <input type="password" id="senha_cadastro" placeholder="Senha">
+    
+    <!-- Botão de cadastro -->
+    <button onclick="cadastrar()">Cadastrar</button>
+    
+    <!-- Link para alternar entre cadastro e login -->
+    <div class="alternar">
+      Já tem uma conta? <a onclick="mostrarFormulario('login')">Voltar ao login</a>
+    </div>
+  </div>
+
+  <!-- Exibição de mensagens de erro ou sucesso -->
+  <p id="mensagem"></p>
+
+  <!-- SCRIPT -->
+  <script>
+    // URL da planilha Google Sheets, onde o Google Apps Script está hospedado
+    const url = "https://script.google.com/macros/s/AKfycbzxwuTOLB2aZZO4jpt3CgkqlUr0AtVwnUC2e6UCc2zsAC3IeEd4YlLzeoj_LObbKcWV/exec";
+
+    // Inicialização do botão de login com Google
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "SEU_CLIENT_ID_DO_GOOGLE", // Substitua com seu Client ID do Google
+        callback: handleCredentialResponse, // Função de callback para processar a resposta do login
+      });
+
+      // Renderiza o botão de login com Google na página
+      google.accounts.id.renderButton(
+        document.getElementById("google_login"),
+        { theme: "outline", size: "large" } // Estilo do botão
+      );
+    };
+
+    // Função para processar a resposta de login com Google
+    function handleCredentialResponse(response) {
+      const jwt = parseJwt(response.credential); // Decodifica o JWT retornado pelo Google
+      alert("Login Google: " + jwt.name + " (" + jwt.email + ")");
+      // Aqui você pode tratar os dados e armazenar na planilha se necessário
+    }
+
+    // Função para decodificar o token JWT
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = decodeURIComponent(atob(base64Url).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(base64);
+    }
+
+    // Função para alternar entre o formulário de login e cadastro
+    function mostrarFormulario(tipo) {
+      document.getElementById("login").style.display = tipo === "login" ? "block" : "none";
+      document.getElementById("cadastro").style.display = tipo === "cadastro" ? "block" : "none";
+      document.getElementById("mensagem").textContent = ""; // Limpa a mensagem de erro ou sucesso
+    }
+
+    // Função para cadastrar um novo usuário
+    function cadastrar() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email_cadastro").value;
+      const senha = document.getElementById("senha_cadastro").value;
+      const btn = document.querySelector("#cadastro button");
+      const mensagem = document.getElementById("mensagem");
+
+      // Valida se todos os campos estão preenchidos
+      if (!nome || !email || !senha) {
+        mensagem.textContent = "Preencha todos os campos.";
+        return;
+      }
+
+      btn.disabled = true; // Desabilita o botão enquanto o cadastro está sendo processado
+      mensagem.textContent = "Cadastrando..."; // Exibe a mensagem de cadastro em andamento
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify({ tipo: "cadastro", nome, email, senha }), // Envia os dados para o Google Apps Script
+      })
+      .then(res => res.json())
+      .then(data => {
+        mensagem.textContent = data.msg; // Exibe a resposta do servidor
+        btn.disabled = false; // Habilita o botão novamente
+
+        if (data.status === "ok") {
+          alert("Cadastro realizado com sucesso!");
+          mostrarFormulario("login"); // Mostra o formulário de login após cadastro
+        }
+      })
+      .catch(() => {
+        mensagem.textContent = "Erro ao cadastrar."; // Exibe mensagem de erro em caso de falha
+        btn.disabled = false; // Habilita o botão novamente
+      });
+    }
+
+    // Função para realizar o login
+    function logar() {
+      const email = document.getElementById("email_login").value;
+      const senha = document.getElementById("senha_login").value;
+      const btn = document.querySelector("#login button");
+      const mensagem = document.getElementById("mensagem");
+
+      // Valida se e-mail e senha foram informados
+      if (!email || !senha) {
+        mensagem.textContent = "Informe seu e-mail e senha.";
+        return;
+      }
+
+      mensagem.textContent = "Validando login..."; // Exibe a mensagem enquanto valida o login
+      btn.disabled = true;
+      btn.textContent = "Validando..."; // Atualiza o texto do botão enquanto processa o login
+
+      fetch(url, {
+        method: "POST",
+        body: JSON.stringify({ tipo: "login", email, senha }), // Envia dados de login para o servidor
+      })
+      .then(res => res.json())
+      .then(data => {
+        mensagem.textContent = data.msg; // Exibe a resposta do servidor
+        btn.disabled = false; // Habilita o botão novamente
+        btn.textContent = "Entrar"; // Restaura o texto do botão
+
+        if (data.status === "ok") {
+          
+          window.location.href = "ferramentas.html"; // Redireciona para a página 'ferramentas.html'
+        }
+      })
+      .catch(() => {
+        mensagem.textContent = "Erro ao validar. Tente novamente."; // Mensagem de erro caso falhe
+        btn.disabled = false; // Habilita o botão novamente
+        btn.textContent = "Entrar"; // Restaura o texto do botão
+      });
+    }
+  </script>
+</body>
+</html>
