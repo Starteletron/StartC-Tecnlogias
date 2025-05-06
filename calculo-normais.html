@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>Contato - StarC Tecnologias</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatório de Retenções de Impostos</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <link rel="stylesheet" href="styles-calculo-normal.css">
   <link rel="stylesheet" href="styles.css">
+  </style>
 </head>
-<body>
+<body id="calculo-normais">
 
-  
   <!-- Cabeçalho -->
    
   <header>
@@ -41,36 +44,50 @@
     <a href="contato.html">Contato</a>
   </nav>
 
-  <!-- Seção principal -->
-  <main>
-    <section class="intro">
-      <h2>Entre em Contato</h2>
-      <p>Tem alguma dúvida ou precisa de mais informações sobre nossos serviços? Preencha o formulário abaixo, e nossa equipe entrará em contato com você em breve.</p>
-    </section>
+  <div class="container">
+    <h1>Relatório de Retenções de Impostos</h1>
 
-    <section class="contact-form">
-      <form action="https://formsubmit.co/gestaodecontabilidad3@gmail.com" method="POST">
-        <input type="text" name="name" placeholder="Seu nome" required>
-        <input type="email" name="email" placeholder="Seu e-mail" required>
-        <textarea name="message" placeholder="Sua dúvida ou mensagem" required></textarea>
-        <input type="submit" value="Enviar Mensagem">
-      </form>
-    </section>
-
-    <!-- Botão lateral com imagem de atendente -->
-    <div class="chat-button">
-      <a href="contato.html" class="btn-atendimento" title="Fale conosco">
-        <img src="logo.png" alt="Atendente" />
-      </a>
+    <!-- Formulário para upload de arquivo ZIP -->
+    <div class="form-item">
+      <label for="zipInput">Escolha o arquivo ZIP:</label>
+      <label class="file-drop" for="zipInput">
+        Selecione o zip de notas
+        <input type="file" id="zipInput" accept=".zip" />
+      </label>
     </div>
-    
-  </main>
 
-  <!-- Rodapé -->
-  <footer>
+    <!-- Botão para processar o arquivo -->
+    <div class="cta">
+      <button onclick="processarZip()">Processar Arquivo ZIP</button>
+    </div>
+
+    <!-- Resultado dos cálculos -->
+    <div id="resultadoImpostos" style="display: none;">
+      <h3>Totais Consolidados:</h3>
+      <p><strong>Total de Notas:</strong> R$ <span id="totalNotas">0,00</span></p>
+
+      <h4>Totais por Imposto (Retidos):</h4>
+      <p><strong>ISS:</strong> R$ <span id="totalISS">0,00</span></p>
+      <p><strong>PIS:</strong> R$ <span id="totalPIS_Retido">0,00</span></p>
+      <p><strong>COFINS:</strong> R$ <span id="totalCOFINS_Retido">0,00</span></p>
+      <p><strong>CSLL:</strong> R$ <span id="totalCSLL_Retido">0,00</span></p>
+      <p><strong>IRPJ:</strong> R$ <span id="totalIRPJ_Retido">0,00</span></p> 
+
+
+      <h4>Totais por Imposto (Recolher):</h4>
+  
+      <p><strong>PIS:</strong> R$ <span id="totalPIS_Recolher">0,00</span></p>
+      <p><strong>COFINS:</strong> R$ <span id="totalCOFINS_Recolher">0,00</span></p>
+      <p><strong>CSLL:</strong> R$ <span id="totalCSLL_Recolher">0,00</span></p>
+      <p><strong>IRPJ:</strong> R$ <span id="totalIRPJ_Recolher">0,00</span></p> 
+
+    </div>
+  </div>
+   <!-- Rodapé -->
+  <footer class="rodape">
     <p>&copy; 2025 StarC Tecnologias | Todos os direitos reservados</p>
-    <p><a href="https://www.instagram.com/charlis_dias/" target="_blank">Instagram</a> | <a href="https://w.app/d4mmb2">Entre em Contato</a></p>
+    <p><a href="https://www.instagram.com/diascharles53" target="_blank">Instagram</a> | <a href="contato.html">Entre em Contato</a></p>
   </footer>
-  <script src="js/geral.js"></script>
+  <script src="js/calculo-normais.js"></script>
 </body>
 </html>
