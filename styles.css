@@ -8,11 +8,37 @@
 
 /* ------------------ ESTILO GLOBAL ------------------ */
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  color: #333;
-  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
+
+/* Área do conteúdo */
+main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Estilos para o botão de login */
+.login-btn {
+  position: absolute;
+  top: 10px; /* Distância do topo */
+  right: 20px; /* Distância da borda direita */
+  background-color: #00796b;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #004d40;
+}
+
 /* Comentário: Fonte padrão 'Arial', cor de fundo clara e altura de linha ajustada para melhorar a legibilidade. */
 
 /* ------------------ CABEÇALHO ------------------ */
@@ -20,7 +46,7 @@ header {
   background-color: #2C3E50;
   color: white;
   padding: 20px;
-  position: sticky;
+  position: relative; /* Isso é necessário para que o botão se posicione dentro do cabeçalho */
   justify-content: space-between;
   top: 0;
   z-index: 1000;
@@ -43,7 +69,7 @@ header {
 }
 
 .logo-img {
-  height: 40px;
+  height: 100px;
   margin-right: 10px;
 }
 
@@ -399,8 +425,9 @@ main {
 footer {
   background-color: #2C3E50;
   color: white;
-  padding: 20px;
+  padding: 20px 10px;
   text-align: center;
+  font-size: 14px;
 }
 
 footer p {
@@ -416,6 +443,7 @@ footer a {
 
 footer a:hover {
   color: white;
+  text-decoration: underline;
 }
 /* Comentário: Rodapé simples e claro, com links que mudam de cor ao passar o mouse, dando uma interação visual. */
 
